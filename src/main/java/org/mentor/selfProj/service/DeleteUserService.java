@@ -16,7 +16,7 @@ public class DeleteUserService {
         try {
             connection.setAutoCommit(false);
             UserDao userDao = new Dao(connection);
-            userDao.dellUserPrep(id);
+            userDao.deleteUser(id);
             connection.commit();
             return 1;
         } catch (SQLException e) {

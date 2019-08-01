@@ -24,8 +24,6 @@
              <td>
                <form action="/update" method="get">
                <input type="hidden" name="id" value="${list.id}">
-               <input type="hidden" name="name" value="${list.name}">
-               <input type="hidden" name="password" value="${list.password}">
                <input type="submit" value="update"></form></td>
         </tr>
     </c:forEach>

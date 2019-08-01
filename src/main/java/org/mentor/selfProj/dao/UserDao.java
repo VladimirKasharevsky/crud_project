@@ -3,14 +3,15 @@ package org.mentor.selfProj.dao;
 import org.mentor.selfProj.model.User;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public interface UserDao {
-    void insertUserPrep(User user) throws SQLException; //add
+    void addUser(User user);
 
-    void dellUserPrep(String id) throws SQLException;
+    void deleteUser(String id);
 
-    void updateUserPrep(User user, String id) throws SQLException;
+    void updateUser(User user, String id);
 
-    ResultSet selectData() throws SQLException;
+    ResultSet selectData() ;
+
+    ResultSet selectDataById(User user);
 }

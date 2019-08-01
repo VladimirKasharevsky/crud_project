@@ -15,31 +15,42 @@ public class Dao implements UserDao {
     }
 
     @Override
-    public void insertUserPrep(User user) throws SQLException {
+    public void addUser(User user) {
         String sql = "insert into users (name, password) values (?,?)";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, user.getName());
+            preparedStatement.setString(2, user.getPassword());
 
-        preparedStatement.setString(1, user.getName());
-        preparedStatement.setString(2, user.getPassword());
+            preparedStatement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        preparedStatement.executeUpdate();
+
+
     }
 
     @Override
-    public void dellUserPrep(String id) throws SQLException {
+    public void deleteUser(String id) {
         String sql = "delete from users where id = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, id);
+            preparedStatement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        preparedStatement.setString(1, id);
-        preparedStatement.executeUpdate();
     }
 
     @Override
-    public void updateUserPrep(User user, String id) throws SQLException {
-            String sql = "update users set name = ?, password = ? where id = ?";
+    public void updateUser(User user, String id) {
+        String sql = "update users set name = ?, password = ? where id = ?";
 
+        try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
             preparedStatement.setString(1, user.getName());
@@ -47,15 +58,38 @@ public class Dao implements UserDao {
             preparedStatement.setString(3, id);
 
             preparedStatement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
     @Override
-    public ResultSet selectData() throws SQLException {
+    public ResultSet selectData() {
 
+        try {
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("select * from users");
             return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public ResultSet selectDataById(User user) {
+        String sql = "select * from users where id = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, String.valueOf(user.getId()));
+            ResultSet result = preparedStatement.executeQuery();
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
 

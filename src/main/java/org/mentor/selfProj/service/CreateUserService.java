@@ -17,7 +17,7 @@ public class CreateUserService {
         try {
             connection.setAutoCommit(false);
             UserDao userDao = new Dao(connection);
-            userDao.insertUserPrep(user);
+            userDao.addUser(user);
             connection.commit();
             return 1;
         } catch (SQLException e) {

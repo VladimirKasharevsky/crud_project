@@ -17,7 +17,7 @@ public class UpdateUserService {
         try {
             connection.setAutoCommit(false);
             UserDao userDao = new Dao(connection);
-            userDao.updateUserPrep(user, id);
+            userDao.updateUser(user, id);
             connection.commit();
             return 1;
         } catch (SQLException e) {
