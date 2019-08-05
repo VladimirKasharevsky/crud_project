@@ -24,5 +24,6 @@ public class CreateServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        response.sendRedirect("/tableserv");
     }
 }

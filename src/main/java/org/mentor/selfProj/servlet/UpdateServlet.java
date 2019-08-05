@@ -30,6 +30,8 @@ public class UpdateServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        response.sendRedirect("/tableserv");
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)

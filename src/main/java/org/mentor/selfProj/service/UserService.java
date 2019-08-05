@@ -1,5 +1,13 @@
 package org.mentor.selfProj.service;
 
-public interface UserService {
+import java.util.List;
 
+public interface UserService {
+    void addUser();
+
+    void deleteUser();
+
+    List listData();
+
+    void updateUser();
 }
