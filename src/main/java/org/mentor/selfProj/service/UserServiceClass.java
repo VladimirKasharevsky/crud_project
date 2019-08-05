@@ -7,13 +7,14 @@ import org.mentor.selfProj.model.User;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
-public class CreateUserService {
+public class UserServiceClass implements UserService {
 
-  Connection connection = DBConfig.getMysqlConnection();
+    Connection connection = DBConfig.getMysqlConnection();
 
-
-    public void createUser(User user) throws Exception {
+    @Override
+    public void createUser(User user) {
         try {
             connection.setAutoCommit(false);
             UserDao userDao = new Dao(connection);
@@ -24,6 +25,21 @@ public class CreateUserService {
             e.printStackTrace();
 
         }
+
     }
 
+    @Override
+    public void deleteUser() {
+
+    }
+
+    @Override
+    public List listData() {
+        return null;
+    }
+
+    @Override
+    public void updateUser() {
+
+    }
 }

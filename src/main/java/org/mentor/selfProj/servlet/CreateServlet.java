@@ -20,7 +20,7 @@ public class CreateServlet extends HttpServlet {
         User user = new User(request.getParameter("name"),request.getParameter("pass") );
 
         try {
-            createUserService.addUser(user);
+            createUserService.createUser(user);
         } catch (Exception e) {
             e.printStackTrace();
         }
