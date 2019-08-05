@@ -22,13 +22,11 @@ public class UpdateServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
 
-        User user = new User(request.getParameter("newName"), request.getParameter("newPassword"));
-
-        String id = request.getParameter("id");
+        User user = new User(Long.parseLong(request.getParameter("id")), request.getParameter("newName"), request.getParameter("newPassword"));
 
 
         try {
-            updateUserService.updateUser(user, id);
+            updateUserService.updateUser(user);
         } catch (Exception e) {
             e.printStackTrace();
         }

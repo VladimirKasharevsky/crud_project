@@ -13,11 +13,11 @@ public class UpdateUserService {
   Connection connection = DBConfig.getMysqlConnection();
 
 
-    public int updateUser(User user, String id) throws Exception {
+    public int updateUser(User user) throws Exception {
         try {
             connection.setAutoCommit(false);
             UserDao userDao = new Dao(connection);
-            userDao.updateUser(user, id);
+            userDao.updateUser(user);
             connection.commit();
             return 1;
         } catch (SQLException e) {

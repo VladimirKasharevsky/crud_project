@@ -9,7 +9,7 @@ public interface UserDao {
 
     void deleteUser(String id);
 
-    void updateUser(User user, String id);
+    void updateUser(User user);
 
     ResultSet selectData() ;
 

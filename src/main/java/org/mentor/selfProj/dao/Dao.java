@@ -47,7 +47,7 @@ public class Dao implements UserDao {
     }
 
     @Override
-    public void updateUser(User user, String id) {
+    public void updateUser(User user) {
         String sql = "update users set name = ?, password = ? where id = ?";
 
         try {
@@ -55,7 +55,7 @@ public class Dao implements UserDao {
 
             preparedStatement.setString(1, user.getName());
             preparedStatement.setString(2, user.getPassword());
-            preparedStatement.setString(3, id);
+            preparedStatement.setString(3, String.valueOf(user.getId()));
 
             preparedStatement.executeUpdate();
         } catch (Exception e) {
