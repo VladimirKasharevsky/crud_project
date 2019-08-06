@@ -12,8 +12,8 @@
 
 <h4>New data</br></h4>
    <p>ID: </p> <input type="text" name="id" value = "${id}"/>
-   <p>Name: </p> <input type="text" name="newName" value = ""/>
-   <p>Password:</p> <p><input type="text" name="newPassword" value = "" />
+   <p>Name: </p> <input type="text" name="newName" value = "${newName}"/>
+   <p>Password:</p> <p><input type="text" name="newPassword" value = "${newPassword}" />
     <input type="submit" value="update">
 </form>
 

@@ -2,44 +2,38 @@ package org.mentor.selfProj.service;
 
 import org.mentor.selfProj.config.DBConfig;
 import org.mentor.selfProj.dao.Dao;
-import org.mentor.selfProj.dao.UserDao;
 import org.mentor.selfProj.model.User;
 
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
 
 public class UserServiceClass implements UserService {
 
     Connection connection = DBConfig.getMysqlConnection();
+    Dao userDao = new Dao(connection);
 
     @Override
     public void createUser(User user) {
-        try {
-            connection.setAutoCommit(false);
-            UserDao userDao = new Dao(connection);
-            userDao.addUser(user);
-            connection.commit();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-
-        }
-
+        userDao.createUser(user);
     }
 
     @Override
-    public void deleteUser() {
-
+    public void deleteUser(String id) {
+        userDao.deleteUser(id);
     }
 
     @Override
     public List listData() {
-        return null;
+        return userDao.selectData();
     }
 
     @Override
-    public void updateUser() {
+    public void updateUser(User user) {
+        userDao.updateUser(user);
+    }
 
+    @Override
+    public User getUserById(String id) {
+        return userDao.selectDataById(id);
     }
 }

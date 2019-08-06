@@ -1,7 +1,7 @@
 package org.mentor.selfProj.servlet;
 
 import org.mentor.selfProj.model.User;
-import org.mentor.selfProj.service.SelectDataFromDbService;
+import org.mentor.selfProj.service.UserServiceClass;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,14 +16,14 @@ import java.util.List;
 public class TableServlet extends HttpServlet {
 
 
-    SelectDataFromDbService selectDataFromDbService = new SelectDataFromDbService();
+    UserServiceClass userService = new UserServiceClass();
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
 
 
-        List<User> list = selectDataFromDbService.listData();
+        List<User> list = userService.listData();
         request.setAttribute("list", list);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("tableserv.jsp");
         requestDispatcher.forward(request, response);

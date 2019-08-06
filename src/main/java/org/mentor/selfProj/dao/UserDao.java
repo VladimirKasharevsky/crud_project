@@ -2,16 +2,16 @@ package org.mentor.selfProj.dao;
 
 import org.mentor.selfProj.model.User;
 
-import java.sql.ResultSet;
+import java.util.List;
 
 public interface UserDao {
-    void addUser(User user);
+    void createUser(User user);
 
     void deleteUser(String id);
 
     void updateUser(User user);
 
-    ResultSet selectData() ;
+    List selectData() ;
 
-    ResultSet selectDataById(User user);
+    User selectDataById(String id);
 }

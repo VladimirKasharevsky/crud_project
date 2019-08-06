@@ -1,6 +1,6 @@
 package org.mentor.selfProj.servlet;
 
-import org.mentor.selfProj.service.DeleteUserService;
+import org.mentor.selfProj.service.UserServiceClass;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +12,7 @@ import java.io.IOException;
 public class DeleteServlet extends HttpServlet {
 
 
-    DeleteUserService deleteUserService = new DeleteUserService();
+    UserServiceClass userService = new UserServiceClass();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
@@ -20,7 +20,7 @@ public class DeleteServlet extends HttpServlet {
 
         String id = request.getParameter("id");
         try {
-            deleteUserService.deleteUser(id);
+            userService.deleteUser(id);
         } catch (Exception e) {
             e.printStackTrace();
         }

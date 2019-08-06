@@ -1,7 +1,7 @@
 package org.mentor.selfProj.servlet;
 
 import org.mentor.selfProj.model.User;
-import org.mentor.selfProj.service.CreateUserService;
+import org.mentor.selfProj.service.UserServiceClass;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +12,8 @@ import java.io.IOException;
 @WebServlet(name = "CreateServlet", urlPatterns = {"/create"})
 public class CreateServlet extends HttpServlet {
 
-    CreateUserService createUserService = new CreateUserService();
+
+    UserServiceClass userService = new UserServiceClass();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
@@ -20,7 +21,7 @@ public class CreateServlet extends HttpServlet {
         User user = new User(request.getParameter("name"),request.getParameter("pass") );
 
         try {
-            createUserService.createUser(user);
+            userService.createUser(user);
         } catch (Exception e) {
             e.printStackTrace();
         }

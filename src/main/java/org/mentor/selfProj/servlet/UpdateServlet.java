@@ -1,8 +1,7 @@
 package org.mentor.selfProj.servlet;
 
 import org.mentor.selfProj.model.User;
-import org.mentor.selfProj.service.SelectDataByIdService;
-import org.mentor.selfProj.service.UpdateUserService;
+import org.mentor.selfProj.service.UserServiceClass;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,8 +15,7 @@ import java.io.IOException;
 public class UpdateServlet extends HttpServlet {
 
 
-    UpdateUserService updateUserService = new UpdateUserService();
-    SelectDataByIdService selectDataByIdService = new SelectDataByIdService();
+    UserServiceClass userService = new UserServiceClass();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
@@ -26,7 +24,7 @@ public class UpdateServlet extends HttpServlet {
 
 
         try {
-            updateUserService.updateUser(user);
+            userService.updateUser(user);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -38,8 +36,13 @@ public class UpdateServlet extends HttpServlet {
             throws IOException, ServletException {
 
         request.setAttribute("id",request.getParameter("id"));
-//        request.setAttribute("name",request.getParameter("name"));
-//        request.setAttribute("password",request.getParameter("password"));
+
+
+            User user = userService.getUserById(request.getParameter("id"));
+
+
+        request.setAttribute("newName", user.getName() );
+        request.setAttribute("newPassword", user.getPassword());
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/update.jsp");
         requestDispatcher.forward(request, response);
