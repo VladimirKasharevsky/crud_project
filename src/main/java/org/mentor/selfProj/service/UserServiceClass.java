@@ -1,16 +1,12 @@
 package org.mentor.selfProj.service;
 
-import org.mentor.selfProj.config.DBConfig;
 import org.mentor.selfProj.dao.Dao;
 import org.mentor.selfProj.model.User;
-
-import java.sql.Connection;
 import java.util.List;
 
 public class UserServiceClass implements UserService {
 
-    Connection connection = DBConfig.getMysqlConnection();
-    Dao userDao = new Dao(connection);
+      Dao userDao = new Dao();
 
     @Override
     public void createUser(User user) {

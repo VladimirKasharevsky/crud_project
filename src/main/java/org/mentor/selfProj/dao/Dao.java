@@ -1,20 +1,18 @@
 package org.mentor.selfProj.dao;
 
+import org.mentor.selfProj.config.DBConfig;
 import org.mentor.selfProj.model.User;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Dao implements UserDao {
 
-    private final Connection connection;
-
-    public Dao(Connection connection) {
-
-        this.connection = connection;
-
-    }
+    private final  Connection connection = DBConfig.getMysqlConnection();
 
     @Override
     public void createUser(User user) {
