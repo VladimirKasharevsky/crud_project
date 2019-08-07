@@ -1,12 +1,14 @@
 package org.mentor.selfProj.service;
 
 import org.mentor.selfProj.dao.Dao;
+import org.mentor.selfProj.dao.UserDao;
 import org.mentor.selfProj.model.User;
+
 import java.util.List;
 
 public class UserServiceClass implements UserService {
 
-      Dao userDao = new Dao();
+    UserDao userDao = new Dao();
 
     @Override
     public void createUser(User user) {
