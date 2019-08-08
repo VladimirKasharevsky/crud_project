@@ -1,14 +1,15 @@
 package org.mentor.selfProj.service;
 
-import org.mentor.selfProj.dao.Dao;
 import org.mentor.selfProj.dao.UserDao;
+import org.mentor.selfProj.dao.UserDaoHibernate;
 import org.mentor.selfProj.model.User;
 
 import java.util.List;
 
 public class UserServiceClass implements UserService {
 
-    UserDao userDao = new Dao();
+//    UserDao userDao = new UserDaoJdbc();
+    UserDao userDao = new UserDaoHibernate();
 
     @Override
     public void createUser(User user) {

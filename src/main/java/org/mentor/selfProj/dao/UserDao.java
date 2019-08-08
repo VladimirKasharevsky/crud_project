@@ -11,7 +11,7 @@ public interface UserDao {
 
     void updateUser(User user);
 
-    List selectData() ;
+    List<User> selectData() ; //List<User>
 
     User selectDataById(String id);
 }
