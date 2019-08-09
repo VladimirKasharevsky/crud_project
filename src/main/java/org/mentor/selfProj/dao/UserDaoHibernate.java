@@ -32,58 +32,61 @@ public class UserDaoHibernate implements UserDao{
 
     @Override
     public void deleteUser(String id) {
-
+        try {
+            Session session = sessionFactory.openSession();
+            Transaction transaction = session.beginTransaction();
+            User user;
+            user = (User)session.load(User.class,Long.parseLong(id));
+            session.delete(user);
+            transaction.commit();
+            session.close() ;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void updateUser(User user) {
-
+        try {
+            Session session = sessionFactory.openSession();
+            session.beginTransaction();
+            Query query = session.createQuery("update User set name = :newName, password = :newPassword where id = :paramName");
+            query.setParameter("newName", user.getName());
+            query.setParameter("newPassword", user.getPassword());
+            query.setParameter("paramName", user.getId());
+            query.executeUpdate();
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public List<User> selectData() {
         try {
             Session session = sessionFactory.openSession();
-//            Query query = session.createQuery("from User where name =:paramName");
             Query query = session.createQuery("from User");
-//            query.setParameter("paramName", name);
             List<User> list =  query.list();
-            session.close();
             return list;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
-
-//        try {
-//            Session session = sessionFactory.openSession();
-//            UserDaoHibernate dao = new UserDaoHibernate(session);
-//            User dataSet = dao.getUserId(name, password);
-//            session.close();
-//            return dataSet;
-//        } catch (HibernateException e) {
-//            e.printStackTrace();
-//            return null;
-//        }
-
     }
 
     @Override
     public User selectDataById(String id) {
-        return null;
+            try {
+                Session session = sessionFactory.openSession();
+                Query query = session.createQuery("from User where id =:paramName");
+                query.setParameter("paramName", Long.parseLong(id));
+                return (User) query.uniqueResult();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
     }
 
 
-//    public User getUserId(String name, String password) throws HibernateException {
-//        Query query = session.createQuery("from UsersDataSet where name =:paramName");
-//        query.setParameter("paramName", name);
-//
-//       return (User) query.uniqueResult();
-//    }
-//
-//    public long insertUser(String name, String password) throws HibernateException {
-//        return (Long) session.save(new User(name, password));
-//    }
 
-
-}

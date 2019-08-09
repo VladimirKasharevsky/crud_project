@@ -9,7 +9,7 @@ public class User {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name = "name", unique = false, updatable = false)
     private String name;
@@ -30,7 +30,7 @@ public class User {
         this.password = password;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
