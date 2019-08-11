@@ -1,6 +1,6 @@
 package org.mentor.selfProj.dao;
 
-import org.mentor.selfProj.config.DBConfigJdbc;
+import org.mentor.selfProj.config.DBHelper;
 import org.mentor.selfProj.model.User;
 
 import java.sql.Connection;
@@ -10,9 +10,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDaoJdbc implements UserDao {
+public class UserDaoJdbcImpl implements UserDao {
 
-    private final  Connection connection = DBConfigJdbc.getMysqlConnection();
+//    private final  Connection connection = DBConfigJdbc.getMysqlConnection();
+    private final  Connection connection =  DBHelper.getDbHelper().getConnection();
 
     @Override
     public void createUser(User user) {

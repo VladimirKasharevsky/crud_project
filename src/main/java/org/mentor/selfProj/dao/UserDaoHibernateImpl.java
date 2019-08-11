@@ -6,13 +6,15 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.mentor.selfProj.config.DBConfigHibernate;
+import org.mentor.selfProj.config.DBHelper;
 import org.mentor.selfProj.model.User;
 
 import java.util.List;
 
-public class UserDaoHibernate implements UserDao{
+public class UserDaoHibernateImpl implements UserDao{
 
-    Configuration configuration = DBConfigHibernate.getMySqlConfiguration();
+   // Configuration configuration = DBConfigHibernate.getMySqlConfiguration();
+   Configuration configuration =  DBHelper.getDbHelper().getConfiguration();
     private final SessionFactory sessionFactory = DBConfigHibernate.createSessionFactory(configuration);;
 
     @Override

@@ -10,12 +10,6 @@ public class DBConfigHibernate {
     private static final String hibernate_show_sql = "true";
     private static final String hibernate_hbm2ddl_auto = "validate";
 
-//    private final SessionFactory sessionFactory;
-
-//    public DBConfigHibernate() {
-//        Configuration configuration = getMySqlConfiguration();
-//        sessionFactory = createSessionFactory(configuration);
-//    }
 
     public static Configuration getMySqlConfiguration() {
         Configuration configuration = new Configuration();
@@ -31,35 +25,6 @@ public class DBConfigHibernate {
         return configuration;
     }
 
-
-
-//    public User getUserId(String name, String password)  {
-//        try {
-//            Session session = sessionFactory.openSession();
-//            UserDaoHibernate dao = new UserDaoHibernate(session);
-//            User dataSet = dao.getUserId(name, password);
-//            session.close();
-//            return dataSet;
-//        } catch (HibernateException e) {
-//            e.printStackTrace();
-//            return null;
-//        }
-//    }
-//
-//    public long addUser(String name, String password)  {
-//        try {
-//            Session session = sessionFactory.openSession();
-//            Transaction transaction = session.beginTransaction();
-//            UserDaoHibernate dao = new UserDaoHibernate(session);
-//            long id = dao.insertUser(name, password);
-//            transaction.commit();
-//            session.close();
-//            return id;
-//        } catch (HibernateException e) {
-//            e.printStackTrace();
-//            return -1;
-//        }
-//    }
 
     public static SessionFactory createSessionFactory(Configuration configuration) {
         StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder();

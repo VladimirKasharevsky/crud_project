@@ -1,15 +1,26 @@
 package org.mentor.selfProj.service;
 
 import org.mentor.selfProj.dao.UserDao;
-import org.mentor.selfProj.dao.UserDaoHibernate;
+import org.mentor.selfProj.dao.UserDaoFactory;
+import org.mentor.selfProj.help_classes.PropClass;
 import org.mentor.selfProj.model.User;
 
+import java.io.IOException;
 import java.util.List;
 
 public class UserServiceClass implements UserService {
 
-//    UserDao userDao = new UserDaoJdbc();
-    UserDao userDao = new UserDaoHibernate();
+
+//    UserDao userDao = new UserDaoJdbcImpl();
+//    UserDao userDao = new UserDaoHibernateImpl();
+     UserDao userDao;
+    {
+        try {
+          userDao = new UserDaoFactory().userDao(PropClass.getProp("typeOfDao"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void createUser(User user) {
