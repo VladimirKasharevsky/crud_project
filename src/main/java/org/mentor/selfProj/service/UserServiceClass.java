@@ -1,7 +1,8 @@
 package org.mentor.selfProj.service;
 
+import org.mentor.selfProj.dao.AbstractFactory;
+import org.mentor.selfProj.dao.Factory;
 import org.mentor.selfProj.dao.UserDao;
-import org.mentor.selfProj.dao.UserDaoFactory;
 import org.mentor.selfProj.help_classes.PropClass;
 import org.mentor.selfProj.model.User;
 
@@ -13,10 +14,20 @@ public class UserServiceClass implements UserService {
 
 //    UserDao userDao = new UserDaoJdbcImpl();
 //    UserDao userDao = new UserDaoHibernateImpl();
-     UserDao userDao;
-    {
+//     UserDao userDao;
+//    {
+//        try {
+//          userDao = new UserDaoFactory().userDao(PropClass.getProp("typeOfDao"));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+
+    Factory factory = new AbstractFactory().getFactory("UserDaoFactory");
+    UserDao userDao;
+        {
         try {
-          userDao = new UserDaoFactory().userDao(PropClass.getProp("typeOfDao"));
+          userDao = factory.getDao(PropClass.getProp("typeOfDao"));
         } catch (IOException e) {
             e.printStackTrace();
         }
