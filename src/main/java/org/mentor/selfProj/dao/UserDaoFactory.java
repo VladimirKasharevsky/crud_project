@@ -1,21 +1,12 @@
 package org.mentor.selfProj.dao;
 
-public class UserDaoFactory implements Factory{
+public class UserDaoFactory {
 
-    @Override
-    public UserDao getDao(String typeOfDao) {
-        switch (typeOfDao) {
-            case "JDBC":
-                return new UserDaoJdbcImpl();
-            case "HIBERNATE":
-                return new UserDaoHibernateImpl();
-            default:
-                return null;
+    public UserDao userDao(String typeOfDao){
+        switch(typeOfDao){
+            case "JDBC": return  new JdbcDao().getDao();
+            case "HIBERNATE": return  new HibernateDao().getDao();
+            default: return null;
         }
     }
-
-//    @Override
-//    public UserDao getDao(String typeOfDao) {
-//        return null;
-//    }
 }
