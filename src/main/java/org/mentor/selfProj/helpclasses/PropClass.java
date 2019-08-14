@@ -1,4 +1,4 @@
-package org.mentor.selfProj.help_classes;
+package org.mentor.selfProj.helpclasses;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -7,11 +7,11 @@ import java.util.Properties;
 
 public class PropClass {
 
-    public static String getProp(String propName) throws IOException{
-     Properties property = new Properties();
+    public static String getProp(String propName) throws IOException {
+        Properties property = new Properties();
 
         try {
-            FileInputStream fis =  fis = new FileInputStream("src/main/resources/config.properties");
+            FileInputStream fis = fis = new FileInputStream("src/main/resources/config.properties");
             property.load(fis);
         } catch (FileNotFoundException e) {
             e.printStackTrace();

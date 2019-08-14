@@ -1,31 +1,15 @@
 package org.mentor.selfProj.service;
 
-import org.mentor.selfProj.dao.Factory;
 import org.mentor.selfProj.dao.UserDao;
 import org.mentor.selfProj.dao.UserDaoFactory;
-import org.mentor.selfProj.help_classes.PropClass;
 import org.mentor.selfProj.model.User;
 
-import java.io.IOException;
 import java.util.List;
 
 public class UserServiceClass implements UserService {
 
 
-//    UserDao userDao = new UserDaoJdbcImpl();
-//    UserDao userDao = new UserDaoHibernateImpl();
-//     UserDao userDao;
-
-    String property;
-    {
-        try {
-          property = PropClass.getProp("typeOfDao");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-UserDao userDao  =   new UserDaoFactory().setUserDaoFactory(property).getDao();
+    UserDao userDao = new UserDaoFactory().getUserDaoFactoryByProperty().getUserDao();
 
 
     @Override
