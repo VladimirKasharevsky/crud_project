@@ -1,7 +1,7 @@
 package org.mentor.selfproj.servlet;
 
 import org.mentor.selfproj.model.User;
-import org.mentor.selfproj.service.UserServiceClass;
+import org.mentor.selfproj.service.UserServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,7 +15,7 @@ import java.io.IOException;
 public class UpdateServlet extends HttpServlet {
 
 
-    UserServiceClass userService = new UserServiceClass();
+    UserServiceImpl userService = new UserServiceImpl();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {

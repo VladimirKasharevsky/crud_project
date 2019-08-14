@@ -1,7 +1,7 @@
 package org.mentor.selfproj.servlet;
 
 import org.mentor.selfproj.model.User;
-import org.mentor.selfproj.service.UserServiceClass;
+import org.mentor.selfproj.service.UserServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,7 +16,7 @@ import java.util.List;
 public class TableServlet extends HttpServlet {
 
 
-    UserServiceClass userService = new UserServiceClass();
+    UserServiceImpl userService = new UserServiceImpl();
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)

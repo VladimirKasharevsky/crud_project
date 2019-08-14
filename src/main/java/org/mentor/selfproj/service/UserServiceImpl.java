@@ -6,7 +6,7 @@ import org.mentor.selfproj.model.User;
 
 import java.util.List;
 
-public class UserServiceClass implements UserService {
+public class UserServiceImpl implements UserService {
 
 
     UserDao userDao = new UserDaoFactory().getUserDaoFactoryByProperty().getUserDao();

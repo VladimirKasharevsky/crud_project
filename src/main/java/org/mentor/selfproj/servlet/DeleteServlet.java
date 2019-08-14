@@ -1,6 +1,6 @@
 package org.mentor.selfproj.servlet;
 
-import org.mentor.selfproj.service.UserServiceClass;
+import org.mentor.selfproj.service.UserServiceImpl;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +12,7 @@ import java.io.IOException;
 public class DeleteServlet extends HttpServlet {
 
 
-    UserServiceClass userService = new UserServiceClass();
+    UserServiceImpl userService = new UserServiceImpl();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
