@@ -1,6 +1,6 @@
 package org.mentor.selfProj.dao;
 
-public class HibernateDao implements Factory {
+public class HibernateFactory implements Factory {
     @Override
     public UserDao getDao() {
         return new UserDaoHibernateImpl();

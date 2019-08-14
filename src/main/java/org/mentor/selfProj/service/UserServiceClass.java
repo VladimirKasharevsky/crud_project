@@ -1,5 +1,6 @@
 package org.mentor.selfProj.service;
 
+import org.mentor.selfProj.dao.Factory;
 import org.mentor.selfProj.dao.UserDao;
 import org.mentor.selfProj.dao.UserDaoFactory;
 import org.mentor.selfProj.help_classes.PropClass;
@@ -24,8 +25,7 @@ public class UserServiceClass implements UserService {
         }
     }
 
-    UserDao userDao = new UserDaoFactory().userDao(property);
-
+UserDao userDao  =   new UserDaoFactory().setUserDaoFactory(property).getDao();
 
 
     @Override
