@@ -1,10 +1,10 @@
-package org.mentor.selfProj.config;
+package org.mentor.selfproj.config;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-import org.mentor.selfProj.model.User;
+import org.mentor.selfproj.model.User;
 
 public class DBConfigHibernate {
     private static final String hibernate_show_sql = "true";

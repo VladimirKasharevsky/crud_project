@@ -1,7 +1,7 @@
-package org.mentor.selfProj.servlet;
+package org.mentor.selfproj.servlet;
 
-import org.mentor.selfProj.model.User;
-import org.mentor.selfProj.service.UserServiceClass;
+import org.mentor.selfproj.model.User;
+import org.mentor.selfproj.service.UserServiceClass;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

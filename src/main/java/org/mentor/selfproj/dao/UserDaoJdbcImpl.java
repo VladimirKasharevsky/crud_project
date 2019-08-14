@@ -1,7 +1,7 @@
-package org.mentor.selfProj.dao;
+package org.mentor.selfproj.dao;
 
-import org.mentor.selfProj.config.DBHelper;
-import org.mentor.selfProj.model.User;
+import org.mentor.selfproj.config.DBHelper;
+import org.mentor.selfproj.model.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

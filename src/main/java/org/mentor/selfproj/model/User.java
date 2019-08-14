@@ -1,4 +1,4 @@
-package org.mentor.selfProj.model;
+package org.mentor.selfproj.model;
 
 import javax.persistence.*;
 

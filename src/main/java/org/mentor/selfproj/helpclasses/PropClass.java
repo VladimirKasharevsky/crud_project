@@ -1,4 +1,4 @@
-package org.mentor.selfProj.helpclasses;
+package org.mentor.selfproj.helpclasses;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

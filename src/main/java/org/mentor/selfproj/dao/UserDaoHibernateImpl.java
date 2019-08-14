@@ -1,13 +1,13 @@
-package org.mentor.selfProj.dao;
+package org.mentor.selfproj.dao;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import org.mentor.selfProj.config.DBConfigHibernate;
-import org.mentor.selfProj.config.DBHelper;
-import org.mentor.selfProj.model.User;
+import org.mentor.selfproj.config.DBConfigHibernate;
+import org.mentor.selfproj.config.DBHelper;
+import org.mentor.selfproj.model.User;
 
 import java.util.List;
 

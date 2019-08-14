@@ -1,6 +1,6 @@
-package org.mentor.selfProj.service;
+package org.mentor.selfproj.service;
 
-import org.mentor.selfProj.model.User;
+import org.mentor.selfproj.model.User;
 
 import java.util.List;
 

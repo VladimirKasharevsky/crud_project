@@ -1,4 +1,4 @@
-package org.mentor.selfProj.config;
+package org.mentor.selfproj.config;
 
 import org.hibernate.cfg.Configuration;
 

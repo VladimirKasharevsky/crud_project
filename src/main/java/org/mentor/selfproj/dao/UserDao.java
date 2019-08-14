@@ -1,6 +1,6 @@
-package org.mentor.selfProj.dao;
+package org.mentor.selfproj.dao;
 
-import org.mentor.selfProj.model.User;
+import org.mentor.selfproj.model.User;
 
 import java.util.List;
 
