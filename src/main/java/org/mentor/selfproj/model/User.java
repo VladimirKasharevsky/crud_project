@@ -17,7 +17,11 @@ public class User {
     @Column(name = "password", updatable = false)
     private String password;
 
-    public User() {}
+    @Column(name = "role", updatable = false)
+    private String role;
+
+    public User() {
+    }
 
     public User(Long id, String name, String password) {
         this.id = id;
@@ -42,6 +46,10 @@ public class User {
         this.password = password;
     }
 
+    public void setRole(String role) {
+        this.password = role;
+    }
+
     public String getName() {
         return name;
     }
@@ -52,6 +60,10 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getRole() {
+        return role;
     }
 
 }
