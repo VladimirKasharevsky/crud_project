@@ -1,13 +1,15 @@
-package org.mentor.selfproj.servlet;
+package org.mentor.selfproj.filters;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
 @WebFilter(filterName = "FilterServlet",
-        urlPatterns = {"/tableserv"},
-        servletNames = "LoginServlet")
+        urlPatterns = {"/tableserv"})
 public class FilterServlet implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -18,12 +20,15 @@ public class FilterServlet implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
+        HttpServletRequest req = (HttpServletRequest) request;
+        HttpSession session = req.getSession(true);
+        session.setAttribute("name", "fff");
 
-                System.out.println("Имя - " + request.getParameter("name" ));
-        System.out.println("Пароль - " + request.getParameter("pass" ));
-
+        if(request.getParameter("name" ).equals("sber")){
+            response.getWriter().print("Redirected");
+        }else{
             chain.doFilter(request, response);
-
+        }
     }
 
     @Override
