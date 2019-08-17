@@ -20,7 +20,7 @@ public class UpdateServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
 
-        User user = new User(Long.parseLong(request.getParameter("id")), request.getParameter("newName"), request.getParameter("newPassword"));
+        User user = new User(Long.parseLong(request.getParameter("id")), request.getParameter("newName"), request.getParameter("newPassword"), request.getParameter("role"));
 
 
         try {
@@ -43,6 +43,7 @@ public class UpdateServlet extends HttpServlet {
 
         request.setAttribute("newName", user.getName() );
         request.setAttribute("newPassword", user.getPassword());
+        request.setAttribute("role", user.getRole());
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/update.jsp");
         requestDispatcher.forward(request, response);

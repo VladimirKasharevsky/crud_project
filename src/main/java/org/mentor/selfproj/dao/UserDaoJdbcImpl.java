@@ -51,7 +51,7 @@ public class UserDaoJdbcImpl implements UserDao {
 
     @Override
     public void updateUser(User user) {
-        String sql = "update users set name = ?, password = ? where id = ?";
+        String sql = "update users set name = ?, password = ?, role = ?  where id = ?";
 
         try {
             connection.setAutoCommit(false);
@@ -59,7 +59,8 @@ public class UserDaoJdbcImpl implements UserDao {
 
             preparedStatement.setString(1, user.getName());
             preparedStatement.setString(2, user.getPassword());
-            preparedStatement.setString(3, String.valueOf(user.getId()));
+            preparedStatement.setString(3, user.getRole());
+            preparedStatement.setString(4, String.valueOf(user.getId()));
 
             preparedStatement.executeUpdate();
             connection.commit();
@@ -105,9 +106,12 @@ public class UserDaoJdbcImpl implements UserDao {
             ResultSet result = preparedStatement.executeQuery();
             connection.commit();
             while (result.next()) {
-                user.setId(result.getLong("id"));
-                user.setName(result.getString("name"));
-                user.setPassword(result.getString("password"));
+                User retUser = new User(result.getLong("id"),result.getString("name"), result.getString("password"),result.getString("role"));
+                user = retUser;
+//                user.setId(result.getLong("id"));
+//                user.setName(result.getString("name"));
+//                user.setPassword(result.getString("password"));
+//                user.setRole(result.getString("role"));
             }
             return user;
         } catch (Exception e) {

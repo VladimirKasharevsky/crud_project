@@ -16,7 +16,7 @@
    <p>Password:</p> <p><input type="text" name="newPassword" value = "${newPassword}" />
    <p>Role:</p>
    <p><select name="role">
-       <option disabled>role</option>
+       <option selected> ${role}</option>
        <option>user</option>
        <option>admin</option>
       </select></p>
