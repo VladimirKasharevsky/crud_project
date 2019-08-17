@@ -52,10 +52,11 @@ public class UserDaoHibernateImpl implements UserDao{
         try {
             Session session = sessionFactory.openSession();
             session.beginTransaction();
-            Query query = session.createQuery("update User set name = :newName, password = :newPassword where id = :paramName");
+            Query query = session.createQuery("update User set name = :newName, password = :newPassword, role = :role where id = :paramName");
             query.setParameter("newName", user.getName());
             query.setParameter("newPassword", user.getPassword());
             query.setParameter("paramName", user.getId());
+            query.setParameter("role", user.getRole());
             query.executeUpdate();
             session.getTransaction().commit();
         } catch (Exception e) {
