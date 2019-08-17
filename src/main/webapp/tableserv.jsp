@@ -8,7 +8,7 @@
 <body>
 <table border="1">
    <tr>
-       <th>ID</th><th>Name</th><th>Pass</th><th>DELL</th><th>UPDATE</th>
+       <th>ID</th><th>Name</th><th>Pass</th><th>Role</th><th>DELL</th><th>UPDATE</th>
    </tr>
    <tr>
 
@@ -17,6 +17,7 @@
             <td><c:out value="${list.id}" /></td>
             <td><c:out value="${list.name}" /></td>
             <td><c:out value="${list.password}" /></td>
+            <td><c:out value="${list.role}" /></td>
             <td>
                <form action="/delete?id=${list.id}" method="post">
                <input type="submit" value="delete"></form></td>
@@ -33,6 +34,12 @@
 <form action="/create" method="post">
  <p> Name:      <input type="text" name="name"/> </p>
  <p> Password:  <input type="text" name="pass"/> </p>
+ <p>Role:</p>
+ <p><select name="role" value="${role}">
+        <option disabled>role</option>
+        <option>user</option>
+        <option>admin</option>
+       </select></p>
     <input type="submit" value="submit">
 </form>
 

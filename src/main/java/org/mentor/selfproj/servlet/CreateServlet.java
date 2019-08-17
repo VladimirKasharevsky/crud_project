@@ -18,7 +18,7 @@ public class CreateServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
 
-        User user = new User(request.getParameter("name"),request.getParameter("pass") );
+        User user = new User(request.getParameter("name"),request.getParameter("pass"), request.getParameter("role") );
 
         try {
             userService.createUser(user);

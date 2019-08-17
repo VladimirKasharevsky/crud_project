@@ -27,11 +27,21 @@ public class User {
         this.id = id;
         this.name = name;
         this.password = password;
+
     }
 
-    public User(String name, String password) {
+    public User(Long id, String name, String password, String role) {
+        this.id = id;
         this.name = name;
         this.password = password;
+        this.role = role;
+
+    }
+
+    public User(String name, String password, String role) {
+        this.name = name;
+        this.password = password;
+        this.role = role;
     }
 
     public void setId(Long id) {

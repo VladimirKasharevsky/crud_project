@@ -17,13 +17,14 @@ public class UserDaoJdbcImpl implements UserDao {
 
     @Override
     public void createUser(User user) {
-        String sql = "insert into users (name, password) values (?,?)";
+        String sql = "insert into users (name, password, role) values (?,?,?)";
         try {
             connection.setAutoCommit(false);
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
             preparedStatement.setString(1, user.getName());
             preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setString(3, user.getRole());
 
             preparedStatement.executeUpdate();
             connection.commit();
@@ -78,10 +79,11 @@ public class UserDaoJdbcImpl implements UserDao {
             connection.commit();
 
             while (result.next()) {
-                User user = new User();
-                user.setId(result.getLong("id"));
-                user.setName(result.getString("name"));
-                user.setPassword(result.getString("password"));
+                User user = new User(result.getLong("id"),result.getString("name"),result.getString("password"), result.getString("role") );
+//                user.setId(result.getLong("id"));
+//                user.setName(result.getString("name"));
+//                user.setPassword(result.getString("password"));
+//                user.setRole(result.getString("role"));
                 list.add(user);
             }
             return list;
