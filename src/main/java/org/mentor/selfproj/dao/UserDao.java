@@ -14,4 +14,7 @@ public interface UserDao {
     List<User> selectData() ; //List<User>
 
     User selectDataById(String id);
+
+    User selectDataByLoginPassword(User user);
+
 }

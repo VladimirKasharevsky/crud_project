@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "TableServlet", urlPatterns = {"/tableserv"})
+@WebServlet(name = "TableServlet", urlPatterns = {"/admin"})
 public class TableServlet extends HttpServlet {
 
 

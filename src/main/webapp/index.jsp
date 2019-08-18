@@ -7,7 +7,7 @@
 
 </head>
     <body>
-        <form action="/tableserv" method="get">
+        <form action="/admin" method="get">
         <h4>Sign In</br></h4>
            <p>Name: </p> <input type="text" name="name" value = ""/>
            <p>Password:</p> <p><input type="password" name="pass" value = "" />

@@ -89,6 +89,20 @@ public class UserDaoHibernateImpl implements UserDao{
                 return null;
             }
         }
+
+        @Override
+    public User selectDataByLoginPassword(User user) {
+        try {
+            Session session = sessionFactory.openSession();
+            Query query = session.createQuery("from User where name =:name and password =:password");
+            query.setParameter("name", user.getName());
+            query.setParameter("password", user.getPassword());
+            return (User) query.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
     }
 
 

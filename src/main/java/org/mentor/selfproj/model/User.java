@@ -30,6 +30,12 @@ public class User {
 
     }
 
+    public User(String name, String password) {
+        this.name = name;
+        this.password = password;
+
+    }
+
     public User(Long id, String name, String password, String role) {
         this.id = id;
         this.name = name;

@@ -12,8 +12,8 @@ import java.util.List;
 
 public class UserDaoJdbcImpl implements UserDao {
 
-//    private final  Connection connection = DBConfigJdbc.getMysqlConnection();
-    private final  Connection connection =  DBHelper.getDbHelper().getConnection();
+    //    private final  Connection connection = DBConfigJdbc.getMysqlConnection();
+    private final Connection connection = DBHelper.getDbHelper().getConnection();
 
     @Override
     public void createUser(User user) {
@@ -80,7 +80,7 @@ public class UserDaoJdbcImpl implements UserDao {
             connection.commit();
 
             while (result.next()) {
-                User user = new User(result.getLong("id"),result.getString("name"),result.getString("password"), result.getString("role") );
+                User user = new User(result.getLong("id"), result.getString("name"), result.getString("password"), result.getString("role"));
 //                user.setId(result.getLong("id"));
 //                user.setName(result.getString("name"));
 //                user.setPassword(result.getString("password"));
@@ -106,7 +106,7 @@ public class UserDaoJdbcImpl implements UserDao {
             ResultSet result = preparedStatement.executeQuery();
             connection.commit();
             while (result.next()) {
-                User retUser = new User(result.getLong("id"),result.getString("name"), result.getString("password"),result.getString("role"));
+                User retUser = new User(result.getLong("id"), result.getString("name"), result.getString("password"), result.getString("role"));
                 user = retUser;
 //                user.setId(result.getLong("id"));
 //                user.setName(result.getString("name"));
@@ -118,6 +118,11 @@ public class UserDaoJdbcImpl implements UserDao {
             e.printStackTrace();
             return null;
         }
+    }
+
+    @Override
+    public User selectDataByLoginPassword(User user) {
+        return null;
     }
 }
 
