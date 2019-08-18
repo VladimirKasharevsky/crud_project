@@ -36,7 +36,8 @@ public class FilterLogin implements Filter {
 
         HttpServletRequest req = (HttpServletRequest) request;
         HttpSession session = req.getSession(true);
-        session.setAttribute("user", loggedUser);
+        session.setAttribute("role", loggedUser.getRole());
+        session.setAttribute("status", "logged");
 
         if (loggedUser.getRole().equals("admin")) {
             chain.doFilter(request, response);
