@@ -7,32 +7,27 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
-@WebFilter(filterName = "FilterResource",
-        urlPatterns = {"/update"},
-        servletNames = "UpdateServlet")
-public class FilterResource implements Filter {
+@WebFilter(filterName = "AdminFilter",
+        urlPatterns = {"/admin"},             //admin
+        servletNames = "TableServlet")
+public class AdminFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        System.out.println("LogFilter init!");
-
+        System.out.println("AdminFilter");
     }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        
 
         HttpServletRequest req = (HttpServletRequest) request;
         HttpSession session = req.getSession();
 
         if (session.getAttribute("role").equals("admin")) {
             chain.doFilter(request, response);
-        } else {
-            response.getWriter().print("NO");
-        }
-     }
+      }
+    }
 
     @Override
     public void destroy() {
-        System.out.println("LogFilter destroy!");
     }
 }
