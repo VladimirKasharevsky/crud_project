@@ -22,6 +22,9 @@ public class TableServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
 
+//        if (request.getSession().getAttribute("role") == null) {
+//            response.sendRedirect("/");
+//        }
 
         List<User> list = userService.listData();
         request.setAttribute("list", list);
