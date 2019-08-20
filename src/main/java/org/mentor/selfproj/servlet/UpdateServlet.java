@@ -29,7 +29,7 @@ public class UpdateServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        response.sendRedirect("/tableserv");
+        response.sendRedirect("/admin");
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)

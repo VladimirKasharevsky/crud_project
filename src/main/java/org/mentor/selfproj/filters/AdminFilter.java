@@ -8,8 +8,8 @@ import java.io.IOException;
 
 
 @WebFilter(filterName = "AdminFilter",
-        urlPatterns = {"/admin"},             //admin
-        servletNames = "TableServlet")
+        urlPatterns = {"/admin","/update","/delete","/create"})
+       // servletNames = "TableServlet")
 public class AdminFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

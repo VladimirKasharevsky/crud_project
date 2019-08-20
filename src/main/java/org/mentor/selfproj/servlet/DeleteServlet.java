@@ -25,7 +25,7 @@ public class DeleteServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        response.sendRedirect("/tableserv");
+        response.sendRedirect("/admin");
     }
 
 }

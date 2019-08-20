@@ -9,8 +9,7 @@ import java.io.IOException;
 
 
 @WebFilter(filterName = "SessionFilter",
-        urlPatterns = {"/update","/delete","/admin","/user","/create"},
-        servletNames = "UpdateServlet")
+        urlPatterns = {"/user","/admin","/update","/delete","/create"})
 public class SessionFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -22,9 +21,14 @@ public class SessionFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpSession session = req.getSession();
 
-        if (session.getAttribute("role") == null) {
-            HttpServletResponse httpResponse = (HttpServletResponse) response;
-            httpResponse.sendRedirect("/");
+        HttpServletResponse res = (HttpServletResponse) response;
+
+        System.out.println("SessionFilter");
+
+        if (session.getAttribute("role") != null) {
+            chain.doFilter(request, response);
+        }else{
+            res.sendRedirect("/");
         }
 
     }
