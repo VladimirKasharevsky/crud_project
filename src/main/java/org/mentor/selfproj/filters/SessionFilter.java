@@ -9,7 +9,8 @@ import java.io.IOException;
 
 
 @WebFilter(filterName = "SessionFilter",
-        urlPatterns = {"/user","/admin","/update","/delete","/create"})
+//        urlPatterns = {"/user", "/admin", "/update", "/delete", "/create"})
+        urlPatterns = {"/user", "/admin", "/update", "/delete", "/create"})
 public class SessionFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -27,7 +28,7 @@ public class SessionFilter implements Filter {
 
         if (session.getAttribute("role") != null) {
             chain.doFilter(request, response);
-        }else{
+        } else {
             res.sendRedirect("/");
         }
 

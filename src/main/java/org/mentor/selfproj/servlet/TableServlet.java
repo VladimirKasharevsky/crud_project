@@ -1,6 +1,7 @@
 package org.mentor.selfproj.servlet;
 
 import org.mentor.selfproj.model.User;
+import org.mentor.selfproj.service.UserService;
 import org.mentor.selfproj.service.UserServiceImpl;
 
 import javax.servlet.RequestDispatcher;
@@ -16,15 +17,11 @@ import java.util.List;
 public class TableServlet extends HttpServlet {
 
 
-    UserServiceImpl userService = new UserServiceImpl();
+    UserService userService = new UserServiceImpl();
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
-
-//        if (request.getSession().getAttribute("role") == null) {
-//            response.sendRedirect("/");
-//        }
 
         List<User> list = userService.listData();
         request.setAttribute("list", list);

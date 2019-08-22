@@ -19,11 +19,11 @@
             <td><c:out value="${list.password}" /></td>
             <td><c:out value="${list.role}" /></td>
             <td>
-               <form action="/delete?id=${list.id}" method="post">
+               <form action="admin/delete?id=${list.id}" method="post">
                <input type="submit" value="delete"></form></td>
 
              <td>
-               <form action="/update" method="get">
+               <form action="admin/update" method="get">
                <input type="hidden" name="id" value="${list.id}">
                <input type="submit" value="update"></form></td>
         </tr>
@@ -31,7 +31,7 @@
 </table>
 
 <h2>Add Info</h2>
-<form action="/create" method="post">
+<form action="admin/create" method="post">
  <p> Name:      <input type="text" name="name"/> </p>
  <p> Password:  <input type="text" name="pass"/> </p>
  <p>Role:</p>

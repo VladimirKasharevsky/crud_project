@@ -8,7 +8,7 @@
 
 
 <h2>Update Info</h2>
-<form action="/update" method="post">
+<form action="/admin/update" method="post">
 
 <h4>New data</br></h4>
    <p>ID: </p> <input type="text" name="id" value = "${id}" readonly/>

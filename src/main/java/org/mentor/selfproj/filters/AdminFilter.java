@@ -9,7 +9,7 @@ import java.io.IOException;
 
 
 @WebFilter(filterName = "AdminFilter",
-        urlPatterns = {"/admin","/user"})
+        urlPatterns = {"/admin/*"})
 public class AdminFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -25,7 +25,7 @@ public class AdminFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
 
         if (session.getAttribute("role") == null) {
-            res.sendRedirect("/");
+            res.sendRedirect("/logged");
         } else if (session.getAttribute("role").equals("admin")) {
             chain.doFilter(request, response);
         }

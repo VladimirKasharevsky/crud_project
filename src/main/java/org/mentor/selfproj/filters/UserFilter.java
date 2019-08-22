@@ -28,7 +28,7 @@ public class UserFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
 
         if (session.getAttribute("role") == null) {
-            res.sendRedirect("/");
+            res.sendRedirect("/logged.jsp");
         } else if (session.getAttribute("role").equals("user") || session.getAttribute("role").equals("admin")) {
             chain.doFilter(request, response);
         }

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "UpdateServlet", urlPatterns = {"/update"})
+@WebServlet(name = "UpdateServlet", urlPatterns = {"/admin/update"})
 public class UpdateServlet extends HttpServlet {
 
 
@@ -20,14 +20,15 @@ public class UpdateServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
 
-        User user = new User(Long.parseLong(request.getParameter("id")), request.getParameter("newName"), request.getParameter("newPassword"), request.getParameter("role"));
+        Long id = Long.parseLong(request.getParameter("id"));
+        String newName = request.getParameter("newName");
+        String newPassword = request.getParameter("newPassword");
+        String role = request.getParameter("role");
 
+        User user = new User(id, newName, newPassword, role);
 
-        try {
-            userService.updateUser(user);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        userService.updateUser(user);
+
 
         response.sendRedirect("/admin");
     }
@@ -35,13 +36,13 @@ public class UpdateServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
 
-        request.setAttribute("id",request.getParameter("id"));
+        request.setAttribute("id", request.getParameter("id"));
 
 
-            User user = userService.getUserById(request.getParameter("id"));
+        User user = userService.getUserById(request.getParameter("id"));
 
 
-        request.setAttribute("newName", user.getName() );
+        request.setAttribute("newName", user.getName());
         request.setAttribute("newPassword", user.getPassword());
         request.setAttribute("role", user.getRole());
 

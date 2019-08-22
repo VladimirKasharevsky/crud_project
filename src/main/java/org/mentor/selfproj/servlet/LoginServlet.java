@@ -19,24 +19,22 @@ public class LoginServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
 
-        User user = new User(request.getParameter("name"), request.getParameter("pass"));
-        User loggedUser = new User();
 
-        try {
-            loggedUser = userService.getUserByLoginPassword(user);
+        String name = request.getParameter("name");
+        String pass = request.getParameter("pass");
+        User user = new User(name, pass);
 
-            HttpSession session = request.getSession(true);
-            session.setAttribute("role", loggedUser.getRole());
-            session.setAttribute("status", "logged");
+        User loggedUser = loggedUser = userService.getUserByLoginPassword(user);
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        HttpSession session = request.getSession(true);
+        session.setAttribute("role", loggedUser.getRole());
+        session.setAttribute("status", "logged");
 
-        if(loggedUser.getRole().equals("admin")){
+
+        if (loggedUser.getRole().equals("admin")) {
             response.sendRedirect("/admin");
-        }else if(loggedUser.getRole().equals("user")){
+        } else if (loggedUser.getRole().equals("user")) {
             response.sendRedirect("/user");
         }
     }
-    }
+}
