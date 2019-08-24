@@ -24,10 +24,14 @@ public class AdminFilter implements Filter {
 
         HttpServletResponse res = (HttpServletResponse) response;
 
+        System.out.println("AdminFilter");
+
         if (session.getAttribute("role") == null) {
-            res.sendRedirect("/logged");
+            res.sendRedirect("/");
         } else if (session.getAttribute("role").equals("admin")) {
             chain.doFilter(request, response);
+        } else if (session.getAttribute("role").equals("user")) {
+            res.sendRedirect("/user");
         }
     }
 
