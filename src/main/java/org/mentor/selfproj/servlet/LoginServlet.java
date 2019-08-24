@@ -24,17 +24,19 @@ public class LoginServlet extends HttpServlet {
         String pass = request.getParameter("pass");
         User user = new User(name, pass);
 
-        User loggedUser = loggedUser = userService.getUserByLoginPassword(user);
+        try {
+            User loggedUser  = userService.getUserByLoginPassword(user);
+            HttpSession session = request.getSession(true);
+            session.setAttribute("role", loggedUser.getRole());
 
-        HttpSession session = request.getSession(true);
-        session.setAttribute("role", loggedUser.getRole());
-        session.setAttribute("status", "logged");
-
-
-        if (loggedUser.getRole().equals("admin")) {
-            response.sendRedirect("/admin");
-        } else if (loggedUser.getRole().equals("user")) {
-            response.sendRedirect("/user");
+            if (loggedUser.getRole().equals("admin")) {
+                response.sendRedirect("/admin");
+            } else if (loggedUser.getRole().equals("user")) {
+                response.sendRedirect("/user");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.getWriter().print("User Not Found");
         }
     }
 }

@@ -122,7 +122,24 @@ public class UserDaoJdbcImpl implements UserDao {
 
     @Override
     public User selectDataByLoginPassword(User user) {
-        return null;
+        String sql = "select * from users where name = ? and password = ?";
+        try {
+            connection.setAutoCommit(false);
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, user.getName());
+            preparedStatement.setString(2, user.getPassword());
+            ResultSet result = preparedStatement.executeQuery();
+            connection.commit();
+            while (result.next()) {
+                User retUser = new User(result.getLong("id"), result.getString("name"), result.getString("password"), result.getString("role"));
+                user = retUser;
+            }
+            return user;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
 
