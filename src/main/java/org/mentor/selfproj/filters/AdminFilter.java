@@ -13,7 +13,7 @@ import java.io.IOException;
 public class AdminFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        System.out.println("AdminFilter");
+
     }
 
     @Override
@@ -23,8 +23,6 @@ public class AdminFilter implements Filter {
         HttpSession session = req.getSession();
 
         HttpServletResponse res = (HttpServletResponse) response;
-
-        System.out.println("AdminFilter");
 
         if (session.getAttribute("role") == null) {
             res.sendRedirect("/");

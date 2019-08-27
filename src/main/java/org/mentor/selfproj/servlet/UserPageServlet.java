@@ -1,7 +1,5 @@
 package org.mentor.selfproj.servlet;
 
-import org.mentor.selfproj.service.UserServiceImpl;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,9 +10,6 @@ import java.io.IOException;
 
 @WebServlet(name = "UserPageServlet", urlPatterns = {"/user"})
 public class UserPageServlet extends HttpServlet {
-
-
-    UserServiceImpl userService = new UserServiceImpl();
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {

@@ -14,7 +14,7 @@ import java.io.IOException;
 public class UserFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        System.out.println("UserFilter");
+
 
     }
 
